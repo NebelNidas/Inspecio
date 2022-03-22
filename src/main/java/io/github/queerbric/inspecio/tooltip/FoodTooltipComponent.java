@@ -36,7 +36,7 @@ public record FoodTooltipComponent(FoodComponent component) implements Convertib
 
 	@Override
 	public int getHeight() {
-		var foodConfig = Inspecio.get().getConfig().getFoodConfig();
+		var foodConfig = Inspecio.getConfig().getFoodConfig();
 
 		int height = 11;
 		if (foodConfig.hasHunger() && foodConfig.getSaturationMode() == SaturationTooltipMode.SEPARATED)
@@ -51,7 +51,7 @@ public record FoodTooltipComponent(FoodComponent component) implements Convertib
 
 	@Override
 	public void drawItems(TextRenderer textRenderer, int x, int y, MatrixStack matrices, ItemRenderer itemRenderer, int z) {
-		var foodConfig = Inspecio.get().getConfig().getFoodConfig();
+		var foodConfig = Inspecio.getConfig().getFoodConfig();
 
 		RenderSystem.setShaderTexture(0, InGameHud.GUI_ICONS_TEXTURE);
 		int saturationY = y;

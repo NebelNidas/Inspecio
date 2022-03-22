@@ -54,22 +54,19 @@ import java.util.function.Consumer;
 /**
  * Represents the Inspecio mod.
  *
- * @version 1.2.0
+ * @version 1.3.1
  * @since 1.0.0
  */
 public class Inspecio implements ClientModInitializer {
 	public static final String NAMESPACE = "inspecio";
+	private static final Logger LOGGER = LogManager.getLogger(NAMESPACE);
 	// TODO: Switch to Client Tag API: https://github.com/FabricMC/fabric/pull/2308
 	public static final TagKey<Item> HIDDEN_EFFECTS_TAG = TagKey.of(Registry.ITEM_KEY, new Identifier(NAMESPACE, "hidden_effects"));
-	private static Inspecio INSTANCE;
-	private final Logger logger = LogManager.getLogger("inspecio");
-	private InspecioConfig config;
+	private static InspecioConfig config = InspecioConfig.defaultConfig();
 
 	@Override
 	public void onInitializeClient() {
-		INSTANCE = this;
-
-		this.reloadConfig();
+		reloadConfig();
 
 		InventoryProvider.register((stack, config) -> {
 			if (config != null && config.isEnabled() && stack.getItem() instanceof BlockItem blockItem) {
@@ -111,8 +108,8 @@ public class Inspecio implements ClientModInitializer {
 	 *
 	 * @param info the message to log
 	 */
-	public void log(String info) {
-		this.logger.info("[Inspecio] " + info);
+	public static void log(String info) {
+		LOGGER.info("[Inspecio] " + info);
 	}
 
 	/**
@@ -120,8 +117,8 @@ public class Inspecio implements ClientModInitializer {
 	 *
 	 * @param info the message to log
 	 */
-	public void warn(String info) {
-		this.logger.warn("[Inspecio] " + info);
+	public static void warn(String info) {
+		LOGGER.warn("[Inspecio] " + info);
 	}
 
 	/**
@@ -130,8 +127,8 @@ public class Inspecio implements ClientModInitializer {
 	 * @param info the message to log
 	 * @param params parameters to the message.
 	 */
-	public void warn(String info, Object... params) {
-		this.logger.warn("[Inspecio] " + info, params);
+	public static void warn(String info, Object... params) {
+		LOGGER.warn("[Inspecio] " + info, params);
 	}
 
 	/**
@@ -140,26 +137,22 @@ public class Inspecio implements ClientModInitializer {
 	 * @param info the message to log
 	 * @param throwable the exception to log, including its stack trace.
 	 */
-	public void warn(String info, Throwable throwable) {
-		this.logger.warn("[Inspecio] " + info, throwable);
+	public static void warn(String info, Throwable throwable) {
+		LOGGER.warn("[Inspecio] " + info, throwable);
 	}
 
-	public InspecioConfig getConfig() {
-		return this.config;
+	public static InspecioConfig getConfig() {
+		return config;
 	}
 
-	public void reloadConfig() {
-		this.config = InspecioConfig.load(this);
-	}
-
-	public static Inspecio get() {
-		return INSTANCE;
+	static void reloadConfig() {
+		config = InspecioConfig.load();
 	}
 
 	static Consumer<String> onConfigError(String path) {
 		return error -> {
 			InspecioConfig.shouldSaveConfigAfterLoad = true;
-			get().warn("Configuration error at \"" + path + "\", error: " + error);
+			warn("Configuration error at \"" + path + "\", error: " + error);
 		};
 	}
 
@@ -193,7 +186,7 @@ public class Inspecio implements ClientModInitializer {
 	 * @param tooltip the tooltip
 	 */
 	public static void appendBlockItemTooltip(ItemStack stack, Block block, List<Text> tooltip) {
-		var config = Inspecio.get().getConfig().getContainersConfig().forBlock(block);
+		var config = Inspecio.getConfig().getContainersConfig().forBlock(block);
 		if (config != null && config.hasLootTable()) {
 			var blockEntityNbt = BlockItem.getBlockEntityNbtFromStack(stack);
 			if (blockEntityNbt != null && blockEntityNbt.contains("LootTable")) {

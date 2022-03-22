@@ -39,7 +39,11 @@ import java.util.Optional;
  * Represents a campfire tooltip. Displays a campfire inventory and the flame if lit.
  *
  * @author LambdAurora
+<<<<<<< HEAD
  * @version 1.1.0
+=======
+ * @version 1.3.1
+>>>>>>> 4e22dae (Fix null issues.)
  * @since 1.1.0
  */
 public class CampfireTooltipComponent implements ConvertibleTooltipData, TooltipComponent {
@@ -54,7 +58,7 @@ public class CampfireTooltipComponent implements ConvertibleTooltipData, Tooltip
 	}
 
 	public static Optional<TooltipData> of(ItemStack stack) {
-		if (!Inspecio.get().getConfig().getContainersConfig().isCampfireEnabled())
+		if (!Inspecio.getConfig().getContainersConfig().isCampfireEnabled())
 			return Optional.empty();
 
 		var nbt = BlockItem.getBlockEntityNbtFromStack(stack);
