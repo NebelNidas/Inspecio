@@ -106,6 +106,7 @@ modrinth {
 	gameVersions = [project.minecraft_version]
 	loaders = ["fabric"]
 	versionType = isMCVersionNonRelease() ? "beta" : "release"
+	uploadFile = tasks.remapJar
 	syncBodyFrom = parseReadme()
 
 	// Changelog fetching
