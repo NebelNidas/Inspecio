@@ -1,7 +1,7 @@
 plugins {
-	id 'fabric-loom' version '0.10.+'
-	id 'io.github.juuxel.loom-quiltflower-mini' version '1.2.1'
-	id 'org.quiltmc.quilt-mappings-on-loom' version '3.1.1'
+	id 'fabric-loom' version '0.12.+'
+	id 'io.github.juuxel.loom-quiltflower' version '1.7.+'
+	id 'org.quiltmc.quilt-mappings-on-loom' version '4.2.+'
 	id 'java-library'
 	id 'maven-publish'
 	id 'org.cadixdev.licenser' version '0.6.1'
@@ -50,7 +50,14 @@ String parseReadme() {
 	return readme
 }
 
-minecraft {
+repositories {
+	maven {
+		name 'TerraformersMC'
+		url 'https://maven.terraformersmc.com/releases'
+		content {
+			includeGroup 'com.terraformersmc'
+		}
+	}
 }
 
 dependencies {
@@ -64,6 +71,12 @@ dependencies {
 	include modImplementation(fabricApi.module('fabric-command-api-v1', project.fabric_api_version))
 	include modImplementation(fabricApi.module('fabric-rendering-v1', project.fabric_api_version))
 	include modImplementation(fabricApi.module('fabric-resource-loader-v0', project.fabric_api_version))
+
+	// Only for ModMenu
+	modLocalRuntime fabricApi.module('fabric-screen-api-v1', project.fabric_api_version)
+	modLocalRuntime("com.terraformersmc:modmenu:3.1.0") {
+		transitive = false
+	}
 }
 
 java {

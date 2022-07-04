@@ -19,17 +19,14 @@ package io.github.queerbric.inspecio;
 
 import io.github.queerbric.inspecio.api.InspecioEntrypoint;
 import io.github.queerbric.inspecio.api.InventoryProvider;
-import io.github.queerbric.inspecio.resource.InspecioResourceReloader;
 import io.github.queerbric.inspecio.tooltip.ConvertibleTooltipData;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.HopperBlock;
 import net.minecraft.block.ShulkerBoxBlock;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.inventory.Inventories;
@@ -38,8 +35,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
-import net.minecraft.resource.ResourceType;
-import net.minecraft.tag.Tag;
+import net.minecraft.tag.TagKey;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -63,10 +59,10 @@ import java.util.function.Consumer;
  */
 public class Inspecio implements ClientModInitializer {
 	public static final String NAMESPACE = "inspecio";
-	public static final Identifier HIDDEN_EFFECTS_TAG = new Identifier(NAMESPACE, "hidden_effects");
+	// TODO: Switch to Client Tag API: https://github.com/FabricMC/fabric/pull/2308
+	public static final TagKey<Item> HIDDEN_EFFECTS_TAG = TagKey.of(Registry.ITEM_KEY, new Identifier(NAMESPACE, "hidden_effects"));
 	private static Inspecio INSTANCE;
 	private final Logger logger = LogManager.getLogger("inspecio");
-	private final InspecioResourceReloader resourceReloader = new InspecioResourceReloader();
 	private InspecioConfig config;
 
 	@Override
@@ -74,7 +70,6 @@ public class Inspecio implements ClientModInitializer {
 		INSTANCE = this;
 
 		this.reloadConfig();
-		ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(this.resourceReloader);
 
 		InventoryProvider.register((stack, config) -> {
 			if (config != null && config.isEnabled() && stack.getItem() instanceof BlockItem blockItem) {
@@ -230,14 +225,6 @@ public class Inspecio implements ClientModInitializer {
 		}
 
 		tooltips.subList(fromIndex, tooltips.size()).clear();
-	}
-
-	public static @Nullable Tag<Item> getHiddenEffectsTag() {
-		var tag = MinecraftClient.getInstance().world.getTagManager().getOrCreateTagGroup(Registry.ITEM_KEY).getTag(HIDDEN_EFFECTS_TAG);
-		if (tag == null) {
-			tag = get().resourceReloader.getCurrentGroup().getTag(HIDDEN_EFFECTS_TAG);
-		}
-		return tag;
 	}
 
 	public static @Nullable StatusEffectInstance getRawEffectFromTag(NbtCompound tag, String tagKey) {
