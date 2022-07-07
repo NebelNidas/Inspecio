@@ -23,12 +23,11 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.tree.LiteralCommandNode;
-import net.fabricmc.fabric.api.client.command.v1.ClientCommandManager;
-import net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource;
-import net.minecraft.text.LiteralText;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
+import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 
 import java.util.function.BiConsumer;
@@ -36,8 +35,8 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import static net.fabricmc.fabric.api.client.command.v1.ClientCommandManager.argument;
-import static net.fabricmc.fabric.api.client.command.v1.ClientCommandManager.literal;
+import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.argument;
+import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal;
 
 public final class InspecioCommand {
 	private InspecioCommand() {
@@ -50,7 +49,7 @@ public final class InspecioCommand {
 		{
 			literalSubCommand.then(literal("reload")
 					.executes(ctx -> {
-						ctx.getSource().sendFeedback(new TranslatableText("inspecio.config.reloading").formatted(Formatting.GREEN));
+						ctx.getSource().sendFeedback(Text.translatable("inspecio.config.reloading").formatted(Formatting.GREEN));
 						Inspecio.reloadConfig();
 						return 0;
 					})
@@ -146,11 +145,13 @@ public final class InspecioCommand {
 			);
 		}
 
-		ClientCommandManager.DISPATCHER.register(
+		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
+			dispatcher.register(
 				literal("inspecio")
 						.executes(onInspecioCommand(literalSubCommand.build()))
 						.then(literalSubCommand)
-		);
+			);
+		});
 	}
 
 	private static LiteralArgumentBuilder<FabricClientCommandSource> initContainer(String name,
@@ -188,12 +189,12 @@ public final class InspecioCommand {
 	}
 
 	private static Text formatBoolean(boolean bool) {
-		return bool ? new LiteralText("true").formatted(Formatting.GREEN) : new LiteralText("false").formatted(Formatting.RED);
+		return bool ? Text.literal("true").formatted(Formatting.GREEN) : Text.literal("false").formatted(Formatting.RED);
 	}
 
 	private static Command<FabricClientCommandSource> onInspecioCommand(LiteralCommandNode<FabricClientCommandSource> config) {
-		var msg = new LiteralText("Inspecio").formatted(Formatting.GOLD)
-				.append(new LiteralText(" v" + Inspecio.getVersion() + "\n").formatted(Formatting.GRAY));
+		var msg = Text.literal("Inspecio").formatted(Formatting.GOLD)
+				.append(Text.literal(" v" + Inspecio.getVersion() + "\n").formatted(Formatting.GRAY));
 		buildHelpCommand(config, 0, msg);
 		return ctx -> {
 			ctx.getSource().sendFeedback(msg);
@@ -202,8 +203,8 @@ public final class InspecioCommand {
 	}
 
 	private static void buildHelpCommand(LiteralCommandNode<FabricClientCommandSource> node, int step, MutableText text) {
-		text.append(new LiteralText('\n' + " ".repeat(step * 2) + "- ").formatted(Formatting.GRAY)
-				.append(new LiteralText(node.getLiteral()).formatted(Formatting.GOLD)));
+		text.append(Text.literal('\n' + " ".repeat(step * 2) + "- ").formatted(Formatting.GRAY)
+				.append(Text.literal(node.getLiteral()).formatted(Formatting.GOLD)));
 
 		for (var child : node.getChildren()) {
 			if (child instanceof LiteralCommandNode) {
@@ -217,7 +218,7 @@ public final class InspecioCommand {
 		var config = Inspecio.getConfig();
 		config.setJukeboxTooltipMode(value);
 		config.save();
-		context.getSource().sendFeedback(prefix("jukebox").append(new LiteralText(value.toString()).formatted(Formatting.WHITE)));
+		context.getSource().sendFeedback(prefix("jukebox").append(Text.literal(value.toString()).formatted(Formatting.WHITE)));
 		return 0;
 	}
 
@@ -226,7 +227,7 @@ public final class InspecioCommand {
 		var config = Inspecio.getConfig();
 		config.getFoodConfig().setSaturationMode(value);
 		config.save();
-		context.getSource().sendFeedback(prefix("food/saturation").append(new LiteralText(value.toString()).formatted(Formatting.WHITE)));
+		context.getSource().sendFeedback(prefix("food/saturation").append(Text.literal(value.toString()).formatted(Formatting.WHITE)));
 		return 0;
 	}
 
@@ -235,12 +236,12 @@ public final class InspecioCommand {
 		var config = Inspecio.getConfig();
 		config.setSignTooltipMode(value);
 		config.save();
-		context.getSource().sendFeedback(prefix("sign").append(new LiteralText(value.toString()).formatted(Formatting.WHITE)));
+		context.getSource().sendFeedback(prefix("sign").append(Text.literal(value.toString()).formatted(Formatting.WHITE)));
 		return 0;
 	}
 
 	private static MutableText prefix(String path) {
-		return new LiteralText(path).formatted(Formatting.GOLD).append(new LiteralText(": ").formatted(Formatting.GRAY));
+		return Text.literal(path).formatted(Formatting.GOLD).append(Text.literal(": ").formatted(Formatting.GRAY));
 	}
 
 	private static <T> Supplier<T> getter(Function<InspecioConfig, T> func) {
@@ -258,7 +259,7 @@ public final class InspecioCommand {
 			Text valueText;
 
 			if (value instanceof Boolean boolValue) valueText = formatBoolean(boolValue);
-			else valueText = new LiteralText(value.toString()).formatted(Formatting.WHITE);
+			else valueText = Text.literal(value.toString()).formatted(Formatting.WHITE);
 
 			context.getSource().sendFeedback(prefix(path).append(valueText));
 
@@ -288,7 +289,7 @@ public final class InspecioCommand {
 
 			Inspecio.getConfig().save();
 
-			context.getSource().sendFeedback(prefix(path).append(new LiteralText(String.valueOf(value)).formatted(Formatting.WHITE)));
+			context.getSource().sendFeedback(prefix(path).append(Text.literal(String.valueOf(value)).formatted(Formatting.WHITE)));
 
 			return 0;
 		};
