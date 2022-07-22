@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 - 2022 LambdAurora <email@lambdaurora.dev>, Emi
+ * Copyright (c) 2020 - 2022 LambdAurora <aurora42lambda@gmail.com>, Emi
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -15,15 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.queerbric.inspecio.api;
+package com.github.reviversmc.advancedtooltips.tooltip;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
+import net.minecraft.client.gui.tooltip.TooltipComponent;
+import net.minecraft.client.item.TooltipData;
 
-/**
- * Provides an inventory context for the given item stack.
- */
-@Environment(EnvType.CLIENT)
-@FunctionalInterface
-@Deprecated
-public interface InventoryProvider extends com.github.reviversmc.advancedtooltips.api.InventoryProvider {}
+public interface ConvertibleTooltipData extends TooltipData {
+	TooltipComponent getComponent();
+}

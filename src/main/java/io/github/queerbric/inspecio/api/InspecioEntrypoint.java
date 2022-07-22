@@ -24,6 +24,7 @@ import net.fabricmc.api.Environment;
  * Represents the Inspecio entrypoint, useful to use the API stuff of Inspecio.
  */
 @Environment(EnvType.CLIENT)
+@Deprecated
 public interface InspecioEntrypoint {
 	void onInspecioInitialized();
 }

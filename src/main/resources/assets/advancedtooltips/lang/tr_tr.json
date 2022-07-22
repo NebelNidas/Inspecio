@@ -1,0 +1,12 @@
+{
+  "advancedtooltips.command.error.unknown_jukebox_tooltip_mode": "Bilinmeyen müzik kutusu bilgi çubuğu modu",
+  "advancedtooltips.command.error.unknown_saturation_tooltip_mode": "Bilinmeyen doygunluk bilgi çubuğu modu",
+  "advancedtooltips.command.error.unknown_sign_tooltip_mode": "Bilinmeyen tabela bilgi çubuğu modu",
+
+  "advancedtooltips.config.reloading": "Ayarlama yeniden yükleniyor...",
+
+  "advancedtooltips.tooltip.lodestone_compass.dimension": "Boyut: %s",
+  "advancedtooltips.tooltip.lodestone_compass.target": "Hedef: %s",
+  "advancedtooltips.tooltip.loot_table": "Yağma Tablosu: %s",
+  "advancedtooltips.tooltip.repair_cost": "Tamir Ücreti: %d"
+}

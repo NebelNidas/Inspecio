@@ -1,0 +1,26 @@
+{
+  "required": true,
+  "package": "com.github.reviversmc.advancedtooltips.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "ArmorStandItemMixin",
+    "BannerPatternItemMixin",
+    "BlockItemMixin",
+    "CameraAccessor",
+    "EntityAccessor",
+    "EntityBucketItemMixin",
+    "FilledMapItemMixin",
+    "ItemEntityAccessor",
+    "ItemStackMixin",
+    "LingeringPotionItemMixin",
+    "PotionItemMixin",
+    "SignItemMixin",
+    "SpawnEggItemMixin",
+    "SpectralArrowItemMixin",
+    "TippedArrowItemMixin",
+    "WitherEntityAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

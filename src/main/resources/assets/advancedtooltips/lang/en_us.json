@@ -1,0 +1,12 @@
+{
+  "advancedtooltips.command.error.unknown_jukebox_tooltip_mode": "Unknown jukebox tooltip mode",
+  "advancedtooltips.command.error.unknown_saturation_tooltip_mode": "Unknown saturation tooltip mode",
+  "advancedtooltips.command.error.unknown_sign_tooltip_mode": "Unknown sign tooltip mode",
+
+  "advancedtooltips.config.reloading": "Reloading configuration...",
+
+  "advancedtooltips.tooltip.lodestone_compass.dimension": "Dimension: %s",
+  "advancedtooltips.tooltip.lodestone_compass.target": "Target: %s",
+  "advancedtooltips.tooltip.loot_table": "Loot Table: %s",
+  "advancedtooltips.tooltip.repair_cost": "Repair Cost: %d"
+}

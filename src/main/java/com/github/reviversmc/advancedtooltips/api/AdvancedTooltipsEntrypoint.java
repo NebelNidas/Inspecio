@@ -15,15 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.queerbric.inspecio.api;
+package com.github.reviversmc.advancedtooltips.api;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 
 /**
- * Provides an inventory context for the given item stack.
+ * Represents the Advanced Tooltips entrypoint, useful for using our API stuff.
  */
 @Environment(EnvType.CLIENT)
-@FunctionalInterface
-@Deprecated
-public interface InventoryProvider extends com.github.reviversmc.advancedtooltips.api.InventoryProvider {}
+public interface AdvancedTooltipsEntrypoint {
+	void onAdvancedTooltipsInitialized();
+}

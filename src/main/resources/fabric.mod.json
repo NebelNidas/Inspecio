@@ -1,29 +1,33 @@
 {
   "schemaVersion": 1,
-  "id": "inspecio",
+  "id": "advanced-tooltips",
   "version": "${version}",
-  "name": "Inspecio",
-  "description": "More tooltips.",
+  "name": "Advanced Tooltips",
+  "description": "Better and more tooltips on items!",
   "authors": [
+    "NebelNidas",
     "Emi",
     "LambdAurora"
   ],
   "contributors": [],
   "contact": {
-    "homepage": "https://modrinth.com/mod/inspecio",
-    "sources": "https://github.com/Queerbric/Inspecio.git",
-    "issues": "https://github.com/Queerbric/Inspecio/issues"
+    "homepage": "https://modrinth.com/mod/advanced-tooltips",
+    "sources": "https://github.com/ReviversMC/advanced-tooltips",
+    "issues": "https://github.com/ReviversMC/advanced-tooltips/issues"
   },
   "license": "LGPLv3",
-  "icon": "assets/inspecio/icon.png",
+  "icon": "assets/advancedtooltips/icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [
-      "io.github.queerbric.inspecio.Inspecio"
+      "com.github.reviversmc.advancedtooltips.AdvancedTooltips"
     ]
   },
   "mixins": [
-    "inspecio.mixins.json"
+    "advancedtooltips.mixins.json"
+  ],
+  "provides": [
+    "inspecio"
   ],
   "depends": {
     "minecraft": ">=1.19",

@@ -15,15 +15,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.queerbric.inspecio.api;
+package com.github.reviversmc.advancedtooltips.mixin;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
+import net.minecraft.client.item.TooltipData;
+import net.minecraft.item.ArmorStandItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import org.spongepowered.asm.mixin.Mixin;
 
-/**
- * Provides an inventory context for the given item stack.
- */
-@Environment(EnvType.CLIENT)
-@FunctionalInterface
-@Deprecated
-public interface InventoryProvider extends com.github.reviversmc.advancedtooltips.api.InventoryProvider {}
+import com.github.reviversmc.advancedtooltips.tooltip.ArmorStandTooltipComponent;
+
+import java.util.Optional;
+
+@Mixin(ArmorStandItem.class)
+public class ArmorStandItemMixin extends Item {
+	public ArmorStandItemMixin(Item.Settings settings) {
+		super(settings);
+	}
+
+	@Override
+	public Optional<TooltipData> getTooltipData(ItemStack stack) {
+		return ArmorStandTooltipComponent.of(stack.getOrCreateNbt()).or(() -> super.getTooltipData(stack));
+	}
+}

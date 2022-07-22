@@ -31,7 +31,7 @@ String parseReadme() {
 	def linkRegex = /!\[([A-z_ ]+)]\((images\/[A-z.\/_]+)\)/
 
 	def readme = (String) file('README.md').text
-	readme = readme.replaceAll(linkRegex, '![$1](https://raw.githubusercontent.com/Queerbric/Inspecio/1.17/$2)')
+	readme = readme.replaceAll(linkRegex, '![$1](https://raw.githubusercontent.com/ReviversMC/advanced-tooltips/1.19/$2)')
 	return readme
 }
 
@@ -98,51 +98,4 @@ jar {
 license {
 	rule file('HEADER')
 	include '**/*.java'
-}
-
-modrinth {
-	projectId = project.modrinth_id
-	versionName = "Inspecio ${project.mod_version} (${getMCVersionString()})"
-	gameVersions = [project.minecraft_version]
-	loaders = ["fabric"]
-	versionType = isMCVersionNonRelease() ? "beta" : "release"
-	uploadFile = tasks.remapJar
-	syncBodyFrom = parseReadme()
-
-	// Changelog fetching
-	def changelogText = file('CHANGELOG.md').text
-	def regexVersion = ((String) project.mod_version).replaceAll('\\.', /\\./).replaceAll('\\+', '\\+')
-	def changelogRegex = ~"###? ${regexVersion}\\n\\n(( *- .+\\n)+)"
-	def matcher = changelogText =~ changelogRegex
-
-	if (matcher.find()) {
-		def changelogContent = matcher.group(1)
-
-		def changelogLines = changelogText.split('\n')
-		def linkRefRegex = ~'^\\[([A-z0-9 _\\-/+.]+)]: '
-		for (int i = changelogLines.length - 1; i > 0; i--) {
-			def line = changelogLines[i]
-			if ((line =~ linkRefRegex).find())
-				changelogContent += '\n' + line
-			else break
-		}
-
-		changelog = changelogContent
-	} else {
-		afterEvaluate {
-			tasks.modrinth.setEnabled(false)
-		}
-	}
-}
-
-// configure the maven publication
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			from components.java
-		}
-	}
-
-	repositories {
-	}
 }

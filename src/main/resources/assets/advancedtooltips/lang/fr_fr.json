@@ -1,0 +1,12 @@
+{
+  "advancedtooltips.command.error.unknown_jukebox_tooltip_mode": "Mode d'info-bulle de jukebox inconnu",
+  "advancedtooltips.command.error.unknown_saturation_tooltip_mode": "Mode d'info-bulle de saturation inconnu",
+  "advancedtooltips.command.error.unknown_sign_tooltip_mode": "Mode d'info-bulle de panneau inconnu",
+
+  "advancedtooltips.config.reloading": "Rechargement de la configuration...",
+
+  "advancedtooltips.tooltip.lodestone_compass.dimension": "Dimension: %s",
+  "advancedtooltips.tooltip.lodestone_compass.target": "Pointe vers: %s",
+  "advancedtooltips.tooltip.loot_table": "Table de butin: %s",
+  "advancedtooltips.tooltip.repair_cost": "Coût de réparation: %d"
+}

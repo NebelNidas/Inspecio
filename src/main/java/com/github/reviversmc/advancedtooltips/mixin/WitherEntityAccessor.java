@@ -15,15 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.queerbric.inspecio.api;
+package com.github.reviversmc.advancedtooltips.mixin;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
+import net.minecraft.entity.boss.WitherEntity;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.gen.Accessor;
 
-/**
- * Provides an inventory context for the given item stack.
- */
-@Environment(EnvType.CLIENT)
-@FunctionalInterface
-@Deprecated
-public interface InventoryProvider extends com.github.reviversmc.advancedtooltips.api.InventoryProvider {}
+@Mixin(WitherEntity.class)
+public interface WitherEntityAccessor {
+	@Accessor
+	float[] getSideHeadYaws();
+}

@@ -1,0 +1,12 @@
+{
+  "advancedtooltips.command.error.unknown_jukebox_tooltip_mode": "Unbekannter Plattenspieler Tooltip modus",
+  "advancedtooltips.command.error.unknown_saturation_tooltip_mode": "Unbekannter Sättigungs Tooltip modus",
+  "advancedtooltips.command.error.unknown_sign_tooltip_mode": "Unbekannter Schild Tooltip modus",
+
+  "advancedtooltips.config.reloading": "Konfiguration wird neu geladen...",
+
+  "advancedtooltips.tooltip.lodestone_compass.dimension": "Dimension: %s",
+  "advancedtooltips.tooltip.lodestone_compass.target": "Ziel: %s",
+  "advancedtooltips.tooltip.loot_table": "Beutetabelle: %s",
+  "advancedtooltips.tooltip.repair_cost": "Verzauberungskosten: %d"
+}

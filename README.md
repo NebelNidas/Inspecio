@@ -1,114 +1,113 @@
-# Inspecio
+# Advanced Tooltips
 <!-- modrinth_exclude.start -->
 ![Java 17](https://img.shields.io/badge/language-Java%2017-9B599A.svg?style=flat-square) <!-- modrinth_exclude.end -->
-[![GitHub license](https://img.shields.io/github/license/Queerbric/Inspecio?style=flat-square)](https://raw.githubusercontent.com/Queerbric/Inspecio/1.18/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/ReviversMC/advanced-tooltips?style=flat-square)](https://raw.githubusercontent.com/ReviversMC/advanced-tooltips/1.18/LICENSE)
 ![Environment: Client](https://img.shields.io/badge/environment-client-1976d2?style=flat-square)
 [![Mod loader: Fabric]][fabric] <!-- modrinth_exclude.start -->
-![Version](https://img.shields.io/github/v/tag/Queerbric/Inspecio?label=version&style=flat-square) <!-- modrinth_exclude.end -->
+![Version](https://img.shields.io/github/v/tag/ReviversMC/advanced-tooltips?label=version&style=flat-square) <!-- modrinth_exclude.end -->
 
 Better and more tooltips on items!
 
-## What's this mod?
 
-Inspecio adds new tooltips to items like shulker boxes, filled map, fish bucket, armor, food, banner patterns, etc.
 
-Some of those are just replacement to the vanilla "text" tooltip with a more fancy one, others are extra information for the user!
+## What is this mod?
+**Advanced Tooltips** adds new tooltips to items like shulker boxes, filled maps, fish buckets, armor, food, banner patterns, and more! It's is also pretty configurable, most parts can be enabled/disabled to your heart's desire!
 
-Most of the mod is configurable, some parts can be enabled/disabled to your heart's desire!
+This is a Fabric port of the now Quilt-exclusive mod "Inspecio", found [here](https://www.curseforge.com/minecraft/mc-mods/inspecio).
+
+
 
 ## Pictures
 
 #### Armor tooltip
-
 ![armor](images/armor.png)
 
-#### Food tooltip
 
+#### Food tooltip
 ![food](images/golden_carrot.png)
 
-#### Effects tooltips
 
+#### Effects tooltips
 ![potion](images/potion.png)
 
 ![suspicious stew](images/suspicious_stew.png)
 
 ![beacon](images/beacon.png)
 
+
 #### Shulker Box tooltips (and other storage blocks)
-
 Normal:
-
 ![normal](images/simple_shulker_box_tooltip.png)
 
 Colored:
-
 ![colored](images/colored_shulker_box_tooltip.png)
 
 Compact:
-
 ![compact](images/compact_shulker_box_tooltip.png)
 
-#### Jukebox tooltip
 
+#### Jukebox tooltip
 ![jukebox](images/jukebox.png)
 
-#### Loot Table Tooltip
 
+#### Loot Table Tooltip
 ![loot_table](images/loot_table.png)
 
-#### Bee Hive Tooltip
 
+#### Bee Hive Tooltip
 ![bees](images/beehive.png)
 
-#### Sign Tooltip
 
+#### Sign Tooltip
 ![sign](images/sign.png)
 
-#### Banner Pattern
 
+#### Banner Pattern
 ![banner_pattern](images/banner_pattern.png)
 
-#### Campfire
 
+#### Campfire
 ![campfire](images/campfire.png)
 
-#### Filled Map
 
+#### Filled Map
 ![map](images/filled_map.png)
+
+
 
 #### Entities
 
 ##### Armor Stand
-
 ![armor_stand](images/armor_stand.png)
 
-##### Bucket of Fish
 
+##### Bucket of Fish
 ![tropical_fish_bucket](images/bucket_of_tropical_fish.png)
 
-##### Bucket of Axolotl
 
+##### Bucket of Axolotl
 ![axolotl](images/bucket_of_axolotl.png)
 
-##### Spawn Eggs
 
+##### Spawn Eggs
 ![fox_spawn_egg](images/fox_spawn_egg.png)
 
-#### Lodestone Compass
 
+#### Lodestone Compass
 Only shows up if Advanced Tooltip is enabled (`F3 + H`) and if the config option is enabled.
 ![lodestone_compass](images/lodestone_compass.png)
 
-#### Repair Cost
 
+#### Repair Cost
 Only shows up if Advanced Tooltip is enabled (`F3 + H`) and if the config option is enabled.
 ![repair_cost](images/repair_cost.png)
 
+
+
 ## Configuration
+The configuration file of the mod is located in `<minecraft directory>/config/advanced-tooltips.json`.
 
-The configuration file of the mod is located in `<minecraft directory>/config/inspecio.json`.
-
-You can use the command `/inspecio config` to manage configuration.
+You can use the command `/tooltips config` to manage configuration.
 
 Here's the default configuration:
 
