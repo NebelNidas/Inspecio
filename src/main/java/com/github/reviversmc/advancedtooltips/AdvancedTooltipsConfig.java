@@ -32,6 +32,7 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.nio.file.StandardOpenOption;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -671,7 +672,7 @@ public class AdvancedTooltipsConfig {
 	private static AdvancedTooltipsConfig backupAndRestore(AdvancedTooltipsConfig config) {
 		try {
 			if (createConfigBackupDirectoryIfNeeded())
-				Files.copy(CONFIG_PATH, CONFIG_BACKUP_PATH);
+				Files.copy(CONFIG_PATH, CONFIG_BACKUP_PATH, StandardCopyOption.REPLACE_EXISTING);
 
 			config.save();
 		} catch (IOException e) {
