@@ -121,7 +121,8 @@ public abstract class ItemStackMixin {
 			}
 
 			if (config.getEffectsConfig().hasPotions()) {
-				if (stack.isIn(AdvancedTooltips.HIDDEN_EFFECTS_TAG)) {
+				if (stack.isIn(AdvancedTooltips.HIDDEN_EFFECTS_TAG)
+						|| AdvancedTooltips.hiddenEffectsItems.contains(stack.getItem())) {
 					datas.add(new StatusEffectTooltipComponent());
 				} else {
 					if (comp.getStatusEffects().size() > 0) {
@@ -129,7 +130,6 @@ public abstract class ItemStackMixin {
 					} else if (stack.getItem() instanceof SuspiciousStewItem) {
 						var nbt = stack.getNbt();
 						if (nbt != null && nbt.contains(SuspiciousStewItem.EFFECTS_KEY, NbtElement.LIST_TYPE)) {
-							System.out.println("Item is Suspicious Stew!");
 							var effects = new ArrayList<StatusEffectInstance>();
 							var effectsNbt = nbt.getList(SuspiciousStewItem.EFFECTS_KEY, NbtElement.COMPOUND_TYPE);
 

@@ -30,6 +30,7 @@ import net.minecraft.inventory.Inventories;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.tag.TagKey;
@@ -55,9 +56,12 @@ import java.util.function.Consumer;
 public class AdvancedTooltips implements ClientModInitializer {
 	public static final String NAMESPACE = "advancedtooltips";
 	private static final Logger LOGGER = LogManager.getLogger(NAMESPACE);
+	private static AdvancedTooltipsConfig config = AdvancedTooltipsConfig.defaultConfig();
+
 	// TODO: Switch to Client Tag API: https://github.com/FabricMC/fabric/pull/2308
 	public static final TagKey<Item> HIDDEN_EFFECTS_TAG = TagKey.of(Registry.ITEM_KEY, new Identifier(NAMESPACE, "hidden_effects"));
-	private static AdvancedTooltipsConfig config = AdvancedTooltipsConfig.defaultConfig();
+	public static List<Item> hiddenEffectsItems = List.of(Items.SUSPICIOUS_STEW);
+
 
 	@Override
 	public void onInitializeClient() {
