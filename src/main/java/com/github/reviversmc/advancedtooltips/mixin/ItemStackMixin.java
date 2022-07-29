@@ -77,9 +77,6 @@ public abstract class ItemStackMixin {
 			at = @At(value = "RETURN")
 	)
 	private void onGetTooltip(PlayerEntity player, TooltipContext context, CallbackInfoReturnable<List<Text>> cir) {
-		if (!context.isAdvanced())
-			return;
-
 		var tooltip = this.advancedtooltips$tooltipList.get();
 		AdvancedTooltipsConfig.AdvancedConfig advancedTooltipsConfig = AdvancedTooltips.getConfig().getAdvancedConfig();
 
@@ -132,6 +129,7 @@ public abstract class ItemStackMixin {
 					} else if (stack.getItem() instanceof SuspiciousStewItem) {
 						var nbt = stack.getNbt();
 						if (nbt != null && nbt.contains(SuspiciousStewItem.EFFECTS_KEY, NbtElement.LIST_TYPE)) {
+							System.out.println("Item is Suspicious Stew!");
 							var effects = new ArrayList<StatusEffectInstance>();
 							var effectsNbt = nbt.getList(SuspiciousStewItem.EFFECTS_KEY, NbtElement.COMPOUND_TYPE);
 
