@@ -63,6 +63,8 @@ dependencies {
 
 	// Only for ModMenu
 	modLocalRuntime fabricApi.module('fabric-screen-api-v1', project.fabric_api_version)
+	modLocalRuntime fabricApi.module('fabric-key-binding-api-v1', project.fabric_api_version)
+	modLocalRuntime fabricApi.module('fabric-lifecycle-events-v1', project.fabric_api_version)
 	modLocalRuntime("com.terraformersmc:modmenu:4.0.5") {
 		transitive = false
 	}
