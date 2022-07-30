@@ -1,0 +1,47 @@
+name: Release
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: gradle
+
+      - name: Make Gradle wrapper executable
+        run: chmod +x ./gradlew
+
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@v1
+
+      - name: Build mod
+        run: ./gradlew build --stacktrace
+
+      - name: Publish mod
+        uses: Kir-Antipov/mc-publish@v3.1
+        with:
+          modrinth-id: hErQiboW
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          curseforge-id: 640815
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          files-primary: build/libs/!(*-@(dev|sources)).jar
+          name: 1.5.0 for MC 1.19
+          version: 1.5.0+1.19
+          version-type: release
+          loaders: |
+            fabric
+          dependencies: |
+            fabric-api    | depends
+
