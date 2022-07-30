@@ -31,6 +31,7 @@ jobs:
           name: build-artifacts
           path: |
             **/build/libs
+            !advancedtooltips-core/
       - name: Cleanup Gradle Cache
         run: |
           rm -f ~/.gradle/caches/modules-2/modules-2.lock
