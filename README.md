@@ -36,12 +36,15 @@ This is a Fabric port of the now Quilt-exclusive mod "Inspecio", found [here](ht
 
 #### Shulker Box tooltips (and other storage blocks)
 Normal:
+
 ![normal](images/simple_shulker_box_tooltip.png)
 
 Colored:
+
 ![colored](images/colored_shulker_box_tooltip.png)
 
 Compact:
+
 ![compact](images/compact_shulker_box_tooltip.png)
 
 
@@ -94,11 +97,13 @@ Compact:
 
 #### Lodestone Compass
 Only shows up if Advanced Tooltip is enabled (`F3 + H`) and if the config option is enabled.
+
 ![lodestone_compass](images/lodestone_compass.png)
 
 
 #### Repair Cost
 Only shows up if Advanced Tooltip is enabled (`F3 + H`) and if the config option is enabled.
+
 ![repair_cost](images/repair_cost.png)
 
 
