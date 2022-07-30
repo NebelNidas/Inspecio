@@ -6,6 +6,10 @@
 version: 2
 updates:
   - package-ecosystem: "gradle"
+    directory: "/advancedtooltips-core"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "gradle"
     directory: "/advancedtooltips-1.19"
     schedule:
       interval: "daily"
