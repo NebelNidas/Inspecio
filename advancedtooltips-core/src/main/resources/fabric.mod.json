@@ -1,0 +1,26 @@
+{
+    "schemaVersion": 1,
+    "id": "advanced-tooltips-core",
+    "version": "${version}",
+    "name": "Advanced Tooltips Core",
+    "description": "Cross Minecraft version compatible components of Advanced Tooltips",
+    "environment": "client",
+    "mixins": [
+        "advancedtooltips.mixins.json"
+    ],
+    "depends": {
+        "minecraft": ">=1.19",
+        "fabricloader": ">=0.12.12",
+        "fabric-command-api-v2": "*",
+        "fabric-rendering-v1": "*",
+        "fabric-resource-loader-v0": "*"
+    },
+    "custom": {
+        "modmenu": {
+            "badges": ["library"],
+            "parent": {
+                "id": "advanced-tooltips"
+            }
+        }
+    }
+}

@@ -1,39 +1,32 @@
 {
-  "schemaVersion": 1,
-  "id": "advanced-tooltips",
-  "version": "${version}",
-  "name": "Advanced Tooltips",
-  "description": "More and better tooltips on items!",
-  "authors": [
-    "NebelNidas",
-    "Emi",
-    "LambdAurora"
-  ],
-  "contributors": [],
-  "contact": {
-    "homepage": "https://modrinth.com/mod/advanced-tooltips",
-    "sources": "https://github.com/ReviversMC/advanced-tooltips",
-    "issues": "https://github.com/ReviversMC/advanced-tooltips/issues"
-  },
-  "license": "LGPLv3",
-  "icon": "assets/advancedtooltips/icon.png",
-  "environment": "*",
-  "entrypoints": {
-    "client": [
-      "com.github.reviversmc.advancedtooltips.AdvancedTooltips"
-    ]
-  },
-  "mixins": [
-    "advancedtooltips.mixins.json"
-  ],
-  "provides": [
-    "inspecio"
-  ],
-  "depends": {
-    "minecraft": ">=1.19",
-    "fabricloader": ">=0.12.12",
-    "fabric-command-api-v2": "*",
-    "fabric-rendering-v1": "*",
-    "fabric-resource-loader-v0": "*"
-  }
+    "schemaVersion": 1,
+    "id": "advanced-tooltips",
+    "version": "${version}",
+    "name": "Advanced Tooltips",
+    "description": "More and better tooltips on items!",
+    "authors": [
+        "NebelNidas",
+        "Emi",
+        "LambdAurora"
+    ],
+    "contributors": [],
+    "contact": {
+        "sources": "https://github.com/ReviversMC/advanced-tooltips",
+        "issues": "https://github.com/ReviversMC/advanced-tooltips/issues"
+    },
+    "license": "LGPL-3.0-or-later",
+    "icon": "assets/advancedtooltips/icon.png",
+    "environment": "client",
+    "entrypoints": {
+        "client": [
+            "com.github.reviversmc.advancedtooltips.AdvancedTooltips"
+        ]
+    },
+    "provides": [
+        "inspecio"
+    ],
+    "depends": {
+        "minecraft": ">=1.19",
+        "advanced-tooltips-core": "*"
+    }
 }

@@ -17,6 +17,8 @@ apply from: '../common.gradle'
 
 
 dependencies {
+    include implementation(project(path: ":advancedtooltips-core", configuration: "namedElements"))
+
 	minecraft "com.mojang:minecraft:${project.minecraft_version_1_19}"
 	mappings(loom.layered {
 		addLayer(quiltMappings.mappings("org.quiltmc:quilt-mappings:${minecraft_version_1_19}+build.${project.quilt_mappings_1_19}:v2"))
