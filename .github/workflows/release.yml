@@ -26,9 +26,9 @@ jobs:
         uses: gradle/wrapper-validation-action@v1
 
       - name: Build mod
-        run: ./gradlew build --stacktrace
+        run: ./gradlew :advancedtooltips-1.19:build --stacktrace
 
-      - name: Publish mod
+      - name: Publish 1.19 version
         uses: Kir-Antipov/mc-publish@v3.1
         with:
           modrinth-id: hErQiboW
@@ -36,7 +36,7 @@ jobs:
           curseforge-id: 640815
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          files-primary: build/libs/!(*-@(dev|sources)).jar
+          files-primary: advancedtooltips-1.19/build/libs/!(*-@(dev|sources)).jar
           name: 1.5.0 for MC 1.19
           version: 1.5.0+1.19
           version-type: release
