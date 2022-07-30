@@ -19,92 +19,92 @@ This is a Fabric port of the now Quilt-exclusive mod "Inspecio", found [here](ht
 ## Pictures
 
 #### Armor tooltip
-![armor](images/armor.png)
+![armor](assets/preview-images/armor.png)
 
 
 #### Food tooltip
-![food](images/golden_carrot.png)
+![food](assets/preview-images/golden_carrot.png)
 
 
 #### Effects tooltips
-![potion](images/potion.png)
+![potion](assets/preview-images/potion.png)
 
-![suspicious stew](images/suspicious_stew.png)
+![suspicious stew](assets/preview-images/suspicious_stew.png)
 
-![beacon](images/beacon.png)
+![beacon](assets/preview-images/beacon.png)
 
 
 #### Shulker Box tooltips (and other storage blocks)
 Normal:
 
-![normal](images/simple_shulker_box_tooltip.png)
+![normal](assets/preview-images/simple_shulker_box_tooltip.png)
 
 Colored:
 
-![colored](images/colored_shulker_box_tooltip.png)
+![colored](assets/preview-images/colored_shulker_box_tooltip.png)
 
 Compact:
 
-![compact](images/compact_shulker_box_tooltip.png)
+![compact](assets/preview-images/compact_shulker_box_tooltip.png)
 
 
 #### Jukebox tooltip
-![jukebox](images/jukebox.png)
+![jukebox](assets/preview-images/jukebox.png)
 
 
 #### Loot Table Tooltip
-![loot_table](images/loot_table.png)
+![loot_table](assets/preview-images/loot_table.png)
 
 
 #### Bee Hive Tooltip
-![bees](images/beehive.png)
+![bees](assets/preview-images/beehive.png)
 
 
 #### Sign Tooltip
-![sign](images/sign.png)
+![sign](assets/preview-images/sign.png)
 
 
 #### Banner Pattern
-![banner_pattern](images/banner_pattern.png)
+![banner_pattern](assets/preview-images/banner_pattern.png)
 
 
 #### Campfire
-![campfire](images/campfire.png)
+![campfire](assets/preview-images/campfire.png)
 
 
 #### Filled Map
-![map](images/filled_map.png)
+![map](assets/preview-images/filled_map.png)
 
 
 
 #### Entities
 
 ##### Armor Stand
-![armor_stand](images/armor_stand.png)
+![armor_stand](assets/preview-images/armor_stand.png)
 
 
 ##### Bucket of Fish
-![tropical_fish_bucket](images/bucket_of_tropical_fish.png)
+![tropical_fish_bucket](assets/preview-images/bucket_of_tropical_fish.png)
 
 
 ##### Bucket of Axolotl
-![axolotl](images/bucket_of_axolotl.png)
+![axolotl](assets/preview-images/bucket_of_axolotl.png)
 
 
 ##### Spawn Eggs
-![fox_spawn_egg](images/fox_spawn_egg.png)
+![fox_spawn_egg](assets/preview-images/fox_spawn_egg.png)
 
 
 #### Lodestone Compass
 Only shows up if Advanced Tooltip is enabled (`F3 + H`) and if the config option is enabled.
 
-![lodestone_compass](images/lodestone_compass.png)
+![lodestone_compass](assets/preview-images/lodestone_compass.png)
 
 
 #### Repair Cost
 Only shows up if Advanced Tooltip is enabled (`F3 + H`) and if the config option is enabled.
 
-![repair_cost](images/repair_cost.png)
+![repair_cost](assets/preview-images/repair_cost.png)
 
 
 
