@@ -37,8 +37,8 @@ jobs:
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           files-primary: advancedtooltips-1.19/build/libs/!(*-@(dev|sources)).jar
-          name: 1.5.0 for MC 1.19
-          version: 1.5.0+1.19
+          name: 1.5.1 for MC 1.19
+          version: 1.5.1+1.19
           version-type: release
           loaders: |
             fabric
