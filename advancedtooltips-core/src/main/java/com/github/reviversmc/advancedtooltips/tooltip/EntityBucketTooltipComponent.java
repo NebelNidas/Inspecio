@@ -35,7 +35,7 @@ import com.github.reviversmc.advancedtooltips.mixin.EntityAccessor;
 /**
  * Represents a tooltip component which displays bees from a beehive.
  */
-public class EntityBucketTooltipComponent extends EntityTooltipComponent {
+public class EntityBucketTooltipComponent extends EntityTooltipComponent<AdvancedTooltipsConfig.EntityConfig> {
 	private final Entity entity;
 
 	private EntityBucketTooltipComponent(AdvancedTooltipsConfig.EntityConfig config, Entity entity) {

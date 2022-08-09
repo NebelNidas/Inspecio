@@ -36,7 +36,7 @@ import com.github.reviversmc.advancedtooltips.mixin.EntityAccessor;
 /**
  * Represents an armor stand tooltip. Displays an armor stand and its armor.
  */
-public class ArmorStandTooltipComponent extends EntityTooltipComponent {
+public class ArmorStandTooltipComponent extends EntityTooltipComponent<AdvancedTooltipsConfig.EntityConfig> {
 	private final Entity entity;
 
 	public ArmorStandTooltipComponent(AdvancedTooltipsConfig.EntityConfig config, Entity entity) {

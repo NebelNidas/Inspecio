@@ -75,7 +75,7 @@ public class StatusEffectTooltipComponent implements ConvertibleTooltipData, Too
 
 		return hiddenEffectMode.stylize(Text.literal(hiddenEffectMode.getText(true, hiddenMotion)), hiddenMotion);
 	}
-	
+
 	private Text getHiddenTime() {
 		var effectsConfig = AdvancedTooltips.getConfig().getEffectsConfig();
 		boolean hiddenMotion = effectsConfig.hasHiddenMotion();

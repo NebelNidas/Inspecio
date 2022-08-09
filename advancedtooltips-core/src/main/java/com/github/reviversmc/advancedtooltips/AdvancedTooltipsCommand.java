@@ -105,7 +105,14 @@ public final class AdvancedTooltipsCommand {
 					)
 			).then(literal("entities")
 					.then(initEntity("armor_stand", cfg -> cfg.getEntitiesConfig().getArmorStandConfig()))
-					.then(initEntity("bee", cfg -> cfg.getEntitiesConfig().getBeeConfig()))
+					.then(initEntity("bee", cfg -> cfg.getEntitiesConfig().getBeeConfig())
+							.then(literal("show_honey_level")
+									.executes(onGetter("entities/bee/show_honey_level",
+											() -> AdvancedTooltips.getConfig().getEntitiesConfig().getBeeConfig().shouldShowHoney())
+									)
+									.then(argument("value", BoolArgumentType.bool())
+											.executes(onBooleanSetter("entities/bee/show_honey_level",
+													val -> AdvancedTooltips.getConfig().getEntitiesConfig().getBeeConfig().setShowHoneyLevel(val))))))
 					.then(initEntity("fish_bucket", cfg -> cfg.getEntitiesConfig().getFishBucketConfig()))
 					.then(initEntity("spawn_egg", cfg -> cfg.getEntitiesConfig().getSpawnEggConfig()))
 					.then(literal("pufferfish_puff_state")
