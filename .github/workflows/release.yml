@@ -29,7 +29,7 @@ jobs:
         run: ./gradlew :advancedtooltips-1.19:build --stacktrace
 
       - name: Publish 1.19 version
-        uses: Kir-Antipov/mc-publish@v3.1
+        uses: Kir-Antipov/mc-publish@v3.2
         with:
           modrinth-id: hErQiboW
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
